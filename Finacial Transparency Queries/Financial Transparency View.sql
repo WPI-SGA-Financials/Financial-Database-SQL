@@ -1,3 +1,4 @@
+CREATE Or REPLACE VIEW `Financial Transparency` AS
 Select Organizations.`Name of Club`,
        Classification,
        IF(`Active Members` Is Null, 'Not Provided', `Active Members`) AS 'Active Members',
