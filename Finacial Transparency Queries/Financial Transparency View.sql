@@ -1,3 +1,5 @@
+# Creates the Financial Transparency View. In order to change fiscal year, change the 19 to 20 in all 3 places
+# Created by Kevin Bimonte, Accountant 2019
 CREATE Or REPLACE VIEW `Financial Transparency` AS
 Select Organizations.`Name of Club`,
        Classification,
@@ -14,5 +16,5 @@ From Organizations
          LEFT JOIN `Funding Requests` `F R`
                    on Organizations.`Name of Club` = `F R`.`Name of Club` AND `F R`.`Fiscal Year` = 'FY 19'
 Where `Inactive?` = 0
-  And Not (Organizations.Classification = 'Department')
+  And Organizations.Classification <> 'Department'
 GROUP BY Organizations.`Name of Club`;
