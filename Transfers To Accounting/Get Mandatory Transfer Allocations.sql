@@ -1,3 +1,4 @@
-SELECT `Parent Organization`,`Fund Name`, Worktag, `Amount Approved`
+Set @FiscalYear = 'FY 20';
+SELECT `Parent Organization`, `Fund Name`, Worktag, `Amount Approved`
 From `Mandatory Transfers`
-Where `Fiscal Year` = 'FY 20'
+Where `Fiscal Year` = @FiscalYear;

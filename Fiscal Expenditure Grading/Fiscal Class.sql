@@ -1,3 +1,4 @@
+Set @FiscalYear = 'FY 19';
 CREATE Or REPLACE View `Fiscal Class` AS
 SELECT `Name of Club`,
        IF(((Budgets.`Approved Appeal` + Budgets.`Amount Proposed`) > 0 And
@@ -13,4 +14,4 @@ SELECT `Name of Club`,
                       If(((Budgets.`Approved Appeal` + Budgets.`Amount Proposed`) >= 100000), 'Class F',
                          'Not budgeted')))))) AS Class
 From Budgets
-WHERE `Fiscal Year` = 'FY 19'
+WHERE `Fiscal Year` = @FiscalYear;

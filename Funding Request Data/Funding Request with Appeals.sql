@@ -1,3 +1,4 @@
+Set @FiscalYear = 'FY 20';
 SELECT `Funding Requests`.`Name of Club`,
        `Funding Requests`.`Fiscal Year`,
        `Funding Requests`.`Dot Number`,
@@ -12,4 +13,4 @@ SELECT `Funding Requests`.`Name of Club`,
        If(FRAppeals.Notes Is NUll, '', FRAppeals.Notes) AS `Appeal Notes`
 From `Funding Requests`
      LEFT JOIN FRAppeals on `Funding Requests`.ID = FR_ID
-WHERE `Fiscal Year` = 'FY 20';
+WHERE `Fiscal Year` = @FiscalYear;
