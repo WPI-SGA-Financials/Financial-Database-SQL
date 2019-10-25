@@ -1,8 +1,8 @@
 # Implements the Financial Expenditure Grading Algorithm
 # Created by Stephanie Racca, Chair of Fiscal Responsibility and Assistance 2019
 # Programmed by Kevin Bimonte, Accountant 2019
-Set @FiscalYear = 'FY 19';
 SELECT Budgets.`Name of Club`,
+       Budgets.`Fiscal Year`,
        Organizations.Classification,
        Class                                                   AS `Fiscal Class`,
        (Budgets.`Approved Appeal` + Budgets.`Amount Proposed`) AS `Amount Approved`,
@@ -68,7 +68,7 @@ SELECT Budgets.`Name of Club`,
 FROM Budgets,
      Organizations,
      `Fiscal Class`
-WHERE Budgets.`Fiscal Year` = @FiscalYear
+WHERE Budgets.`Fiscal Year` = 'FY 19'
   And (Budgets.`Approved Appeal` + Budgets.`Amount Proposed`) > 0
   AND Budgets.`Name of Club` = Organizations.`Name of Club`
   AND Budgets.`Name of Club` = `Fiscal Class`.`Name of Club`

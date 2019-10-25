@@ -1,13 +1,14 @@
-Set @FiscalYear = 'FY 19';
+Set @FiscalYear = 'FY 20';
 SELECT `Name of Club`,
        `Funding Date`,
        `Dot Number`,
        `Amount Approved`,
-       `Report Form Approved Amount`,
-       If(`Report Form Approved` = 'Yes', `Report Form Approved Amount`, `Amount Approved`)     AS Liability,
+       FRF.`Approved Amount` as `Report Form Approved Amount`,
+       If(Status = 'Approved', FRF.`Approved Amount`, `Amount Approved`)    AS `Liability`,
        If(`Workday Approved` = 'Yes', 0,
-          If(`Report Form Approved` = 'Yes', `Report Form Approved Amount`, `Amount Approved`)) AS `Workday Liability`
+          If(Status = 'Approved', FRF.`Approved Amount`, `Amount Approved`)) AS `Workday Liability`
 FROM `Funding Requests`
+    Left JOIN FRReportForms FRF on `Funding Requests`.ID = FRF.FR_ID
 WHERE `Amount Approved` > 0
   AND `Fiscal Year` = @FiscalYear
 ORDER BY `Funding Date`;
