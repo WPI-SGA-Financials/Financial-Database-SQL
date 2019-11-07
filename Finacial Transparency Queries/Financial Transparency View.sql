@@ -16,5 +16,5 @@ From Organizations
          LEFT JOIN `Funding Requests` `F R`
                    on Organizations.`Name of Club` = `F R`.`Name of Club` AND `F R`.`Fiscal Year` = 'FY 20'
 Where `Inactive?` = 0
-  And Organizations.Classification <> 'Department' And Organizations.Classification <> 'Graduate'
+  And Organizations.Classification <> 'Department' And Organizations.Classification <> 'Graduate' And Organizations.Classification <> 'Mandatory Transfer'
 GROUP BY Organizations.`Name of Club`;
