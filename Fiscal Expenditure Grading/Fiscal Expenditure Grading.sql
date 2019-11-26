@@ -2,7 +2,8 @@
 # Created by Stephanie Racca, Chair of Fiscal Responsibility and Assistance 2019
 # Programmed by Kevin Bimonte, Accountant 2019
 CREATE or REPLACE View `Fiscal Expenditure Grades` As
-SELECT Budgets.`Name of Club`,
+SELECT Budgets.ID,
+       Budgets.`Name of Club`,
        Budgets.`Fiscal Year`,
        Organizations.Classification,
        FiscalClass(Budgets.`Amount Proposed`, `Approved Appeal`) AS `Fiscal Class`,

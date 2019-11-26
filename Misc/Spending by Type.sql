@@ -1,17 +1,3 @@
-SELECT `Funding Requests`.`Name of Club`,
-       `Funding Requests`.`Dot Number`,
-       `Workday Approved`,
-       `Workday Approval Date`,
-       `IDT Submitted`
-From `Funding Requests`
-         Left JOIN FRReportForms FRF on `Funding Requests`.ID = FRF.FR_ID
-Where `Fiscal Year` = 'FY 20'
-  and Decision <> 'Denied'
-  and FRF.Status = 'Approved'
-  and `IDT Submitted` is FALSE
-  and FRF.`Approved Amount` > 0
-Order BY `Funding Date`, `Dot Number`;
-
 Select `Fiscal Year`,
        `Type of Club`,
        count(`Type of Club`)                           as `Count`,
@@ -37,5 +23,3 @@ Where `Type of Club` != ''
   and `Fiscal Year` is not Null
 GROUP BY `Type of Club`, `F R`.`Fiscal Year`
 ORDER BY `Type of Club`;
-
-
