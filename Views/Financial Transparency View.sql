@@ -1,4 +1,4 @@
-# Creates the Financial Transparency View. In order to change fiscal year, change 'FY 19' to desired Fiscal Year
+# Creates the Financial Transparency View. In order to change fiscal year, change 'FY 20' to desired Fiscal Year
 # Created by Kevin Bimonte, Accountant 2019
 CREATE Or REPLACE VIEW `Financial Transparency` AS
 Select Organizations.`Name of Club`,
