@@ -1,6 +1,6 @@
-Drop FUNCTION if EXISTS FiscalClass;
+Drop FUNCTION if EXISTS fnc_FiscalClass;
 
-Create Function FiscalClass(
+Create Function fnc_FiscalClass(
     amtProposed DECIMAL(10,2),
     amtAppealApproved DECIMAL(10,2)
 )

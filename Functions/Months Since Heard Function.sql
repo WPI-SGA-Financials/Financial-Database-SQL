@@ -1,6 +1,6 @@
-Drop FUNCTION if EXISTS FindMonths;
+Drop FUNCTION if EXISTS fnc_FindMonths;
 
-Create Function FindMonths(hearingDate DATE)
+Create Function fnc_FindMonths(hearingDate DATE)
     returns int(4)
     DETERMINISTIC
 BEGIN

@@ -1,6 +1,6 @@
-Drop FUNCTION if EXISTS FEGrading;
+Drop FUNCTION if EXISTS fnc_FEGrading;
 
-Create Function FEGrading(amtProposed DECIMAL(10, 2),
+Create Function fnc_FEGrading(amtProposed DECIMAL(10, 2),
                           amtAppealApproved DECIMAL(10, 2),
                           amtSpent DECIMAL(10, 2))
     returns VARCHAR(8)
@@ -12,7 +12,7 @@ BEGIN
 
     Set ratio = amtSpent / (amtProposed + amtAppealApproved);
 
-    Set Class = FiscalClass(amtProposed, amtAppealApproved);
+    Set Class = fnc_FiscalClass(amtProposed, amtAppealApproved);
 
     if Class = 'Class A' then
         If ratio > 0.85 and ratio <= 1.0 Then

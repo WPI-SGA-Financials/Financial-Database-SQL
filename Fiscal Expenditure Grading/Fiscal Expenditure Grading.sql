@@ -6,10 +6,10 @@ SELECT Budgets.ID,
        Budgets.`Name of Club`,
        Budgets.`Fiscal Year`,
        Organizations.Classification,
-       FiscalClass(Budgets.`Amount Proposed`, `Approved Appeal`) AS `Fiscal Class`,
+       fnc_FiscalClass(Budgets.`Amount Proposed`, `Approved Appeal`) AS `Fiscal Class`,
        (Budgets.`Approved Appeal` + Budgets.`Amount Proposed`)   AS `Amount Approved`,
        Budgets.`Amount Spent`,
-       FEGrading(Budgets.`Amount Proposed`, Budgets.`Approved Appeal`, Budgets.`Amount Spent`)  AS Grade
+       fnc_FEGrading(Budgets.`Amount Proposed`, Budgets.`Approved Appeal`, Budgets.`Amount Spent`)  AS Grade
 FROM Budgets,
      Organizations
 WHERE Budgets.`Fiscal Year` = 'FY 19'
