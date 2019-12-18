@@ -41,7 +41,3 @@ SELECT ID,
                    IF(LEFT(`Dot Number`, 2) = 'C.', 'Cabinet', 'No se'))))) As `Hearing Body`
 FROM Reclassifications
 ORDER BY `Dot Number`;
-
-Select *
-From `All Requests`
-Where `Hearing Date` = '2019-10-02' And `Hearing Body` = 'Financial Board' ;

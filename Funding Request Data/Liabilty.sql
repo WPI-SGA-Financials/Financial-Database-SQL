@@ -11,6 +11,7 @@ SELECT `Name of Club`,
           If(Status = 'Approved', FRF.`Approved Amount`, `Amount Approved`)) AS `Workday Liability`
 FROM `Funding Requests`
          Left JOIN FRReportForms FRF on `Funding Requests`.ID = FRF.FR_ID
+         LEFT JOIN FRWorkdayIDT FWI on `Funding Requests`.ID = FWI.FR_ID
 WHERE `Amount Approved` > 0
   AND `Fiscal Year` = @FiscalYear
 ORDER BY `Funding Date`, `Dot Number`;
@@ -20,10 +21,11 @@ Select count(*)                                                                 
        sum(`Amount Approved`)                                                     as `Total Approved`,
        sum(FRF.`Approved Amount`)                                                 as `RF Approved Amt`,
        sum(If(Status = 'Approved', FRF.`Approved Amount`, `Amount Approved`))     AS `Total Liability`,
-       sum(if(`Workday Approved` = 'Yes', 1, 0))                                as `Approved Requests`,
+       sum(if(`Workday Approved` = 'Yes', 1, 0))                                  as `Approved Requests`,
        sum(If(`Workday Approved` = 'Yes', 0,
               If(Status = 'Approved', FRF.`Approved Amount`, `Amount Approved`))) AS `Total Workday Liability`
 From `Funding Requests`
          Left JOIN FRReportForms FRF on `Funding Requests`.ID = FRF.FR_ID
+         LEFT JOIN FRWorkdayIDT FWI on `Funding Requests`.ID = FWI.FR_ID
 WHERE `Amount Approved` > 0
   AND `Fiscal Year` = @FiscalYear

@@ -1,6 +1,6 @@
-Drop FUNCTION if EXISTS fcn_FiscalYear;
+Drop FUNCTION if EXISTS fnc_FiscalYear;
 
-Create Function fcn_FiscalYear(
+Create Function fnc_FiscalYear(
     hearingDate DATE
 )
 returns VARCHAR(5)

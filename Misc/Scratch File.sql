@@ -5,6 +5,7 @@ SELECT `Funding Requests`.`Name of Club`,
        `IDT Submitted`
 From `Funding Requests`
          Left JOIN FRReportForms FRF on `Funding Requests`.ID = FRF.FR_ID
+LEFT JOIN FRWorkdayIDT FWI on `Funding Requests`.ID = FWI.FR_ID
 Where `Fiscal Year` = 'FY 20'
   and Decision <> 'Denied'
   and FRF.Status = 'Approved'
