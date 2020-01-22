@@ -39,4 +39,6 @@ Where `Type of Club` != ''
 GROUP BY `Type of Club`, `F R`.`Fiscal Year`
 ORDER BY `Type of Club`;
 
-
+Select *
+From `Complete Funding Request`
+Where `Fiscal Year` = 'FY 20'
