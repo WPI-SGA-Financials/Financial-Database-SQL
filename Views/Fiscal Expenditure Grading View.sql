@@ -2,16 +2,17 @@
 # Created by Stephanie Racca, Chair of Fiscal Responsibility and Assistance 2019
 # Programmed by Kevin Bimonte, Accountant 2019
 CREATE or REPLACE View `Fiscal Expenditure Grades` As
-SELECT Budgets.ID,
-       Budgets.`Name of Club`,
-       Budgets.`Fiscal Year`,
-       Organizations.Classification,
-       fnc_FiscalClass(Budgets.`Amount Proposed`, `Approved Appeal`) AS `Fiscal Class`,
-       (Budgets.`Approved Appeal` + Budgets.`Amount Proposed`)   AS `Amount Approved`,
-       Budgets.`Amount Spent`,
-       fnc_FEGrading(Budgets.`Amount Proposed`, Budgets.`Approved Appeal`, Budgets.`Amount Spent`)  AS Grade
-FROM Budgets,
-     Organizations
-WHERE Budgets.`Fiscal Year` = 'FY 19'
-  AND Budgets.`Name of Club` = Organizations.`Name of Club`
-ORDER BY `Name of Club`;
+SELECT B.ID,
+       B.`Name of Club`,
+       B.`Fiscal Year`,
+       O.Classification,
+       fnc_FiscalClass(`Amount_Proposed`, `Approved_Appeal`)               AS `Fiscal Class`,
+       (`Approved_Appeal` + `Amount_Proposed`)                             AS `Amount Approved`,
+       `Amount_Spent`,
+       fnc_FEGrading(`Amount_Proposed`, `Approved_Appeal`, `Amount_Spent`) AS Grade
+FROM Budget B
+         Inner Join Organizations O on B.`Name of Club` = O.`Name of Club`
+         INNER JOIN BudgetSection BS on B.ID = B_ID
+         Inner JOIN BudgetLineItem BLI on BS.ID = BLI.BS_ID
+GROUP BY `Name of Club`, `Fiscal Year`
+ORDER BY `Name of Club`, `Fiscal Year`;
