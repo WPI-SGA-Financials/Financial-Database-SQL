@@ -10,7 +10,11 @@ BEGIN
     DECLARE ratio DECIMAL(10, 2);
     DECLARE Grade varchar(8);
 
-    Set ratio = amtSpent / (amtProposed + amtAppealApproved);
+    if amtProposed + amtAppealApproved = 0 Then
+        Set ratio = 0;
+    else
+        Set ratio = amtSpent / (amtProposed + amtAppealApproved);
+    end if;
 
     Set Class = fnc_FiscalClass(amtProposed, amtAppealApproved);
 
