@@ -10,5 +10,5 @@ From `Mandatory Transfers`
          LEFT JOIN `Operating Expenses` `O E` on MLI.ID = `O E`.MTLI_ID
 Where `Fund Name` = 'Operating Account'
   and `Parent Organization` = 'Student Government Association'
-  and `Fiscal Year` = 'FY 20'
+  and `Fiscal Year` = fnc_FiscalYear(now())
 GROUP BY `Line Item`
